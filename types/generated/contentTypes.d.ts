@@ -436,6 +436,39 @@ export interface ApiContactoContacto extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiOrdenOrden extends Struct.CollectionTypeSchema {
+  collectionName: 'ordens';
+  info: {
+    displayName: 'Orden';
+    pluralName: 'ordens';
+    singularName: 'orden';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    codigo_pago: Schema.Attribute.String;
+    creado_en: Schema.Attribute.DateTime;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direccion: Schema.Attribute.String;
+    dni: Schema.Attribute.String;
+    email: Schema.Attribute.Email;
+    estado: Schema.Attribute.Enumeration<['pendiente', 'pagado', 'cancelado']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::orden.orden'> &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String;
+    productos: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    total: Schema.Attribute.Decimal;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -469,6 +502,9 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     productName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'productName'>;
+    stock: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<1>;
     sub_category: Schema.Attribute.Relation<
       'oneToOne',
       'api::sub-category.sub-category'
@@ -1023,6 +1059,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
       'api::contacto.contacto': ApiContactoContacto;
+      'api::orden.orden': ApiOrdenOrden;
       'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
       'plugin::content-releases.release': PluginContentReleasesRelease;

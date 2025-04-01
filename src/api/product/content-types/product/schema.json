@@ -1,4 +1,4 @@
-{
+{ 
   "kind": "collectionType",
   "collectionName": "products",
   "info": {
@@ -59,6 +59,11 @@
         "Hype",
         "Ropa"
       ],
+      "required": true
+    },
+    "stock": {
+      "type": "integer",
+      "default": 1,
       "required": true
     }
   }
