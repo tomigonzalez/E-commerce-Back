@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_home_page_textos_del_carrusels",
+  "info": {
+    "displayName": "TextosDelCarrusel"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    }
+  }
+}

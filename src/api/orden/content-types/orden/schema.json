@@ -4,7 +4,8 @@
   "info": {
     "singularName": "orden",
     "pluralName": "ordens",
-    "displayName": "Orden"
+    "displayName": "Orden",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,9 +23,6 @@
     "direccion": {
       "type": "string"
     },
-    "productos": {
-      "type": "string"
-    },
     "total": {
       "type": "decimal"
     },
@@ -32,15 +30,31 @@
       "type": "enumeration",
       "enum": [
         "pendiente",
-        "pagado",
+        "confirmado",
         "cancelado"
       ]
     },
-    "codigo_pago": {
+    "apellido": {
       "type": "string"
     },
-    "creado_en": {
-      "type": "datetime"
+    "telefono": {
+      "type": "string"
+    },
+    "localidad": {
+      "type": "string"
+    },
+    "codigoPostal": {
+      "type": "string"
+    },
+    "envio": {
+      "type": "component",
+      "repeatable": false,
+      "component": "default.envio"
+    },
+    "producto_pedido": {
+      "type": "component",
+      "repeatable": true,
+      "component": "default.producto-pedido"
     }
   }
 }

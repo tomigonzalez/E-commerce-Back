@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_default_envios",
+  "info": {
+    "displayName": "envio"
+  },
+  "options": {},
+  "attributes": {
+    "transportista": {
+      "type": "string"
+    },
+    "servicio": {
+      "type": "text"
+    },
+    "precio": {
+      "type": "decimal"
+    },
+    "ciudad": {
+      "type": "text"
+    },
+    "direccion": {
+      "type": "text"
+    },
+    "codigoPostal": {
+      "type": "string"
+    },
+    "provincia": {
+      "type": "string"
+    },
+    "pais": {
+      "type": "text"
+    }
+  }
+}

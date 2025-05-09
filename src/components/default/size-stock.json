@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_default_size_stocks",
+  "info": {
+    "displayName": "SizeStock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "stock": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "XS",
+        "S",
+        "M",
+        "UNICO",
+        "L",
+        "XL",
+        "XXL",
+        "XXXL"
+      ],
+      "required": true
+    }
+  }
+}

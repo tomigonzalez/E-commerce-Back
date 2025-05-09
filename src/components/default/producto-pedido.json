@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_default_producto_pedidos",
+  "info": {
+    "displayName": "producto_pedido",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "product_id": {
+      "type": "string",
+      "default": "1"
+    },
+    "talle": {
+      "type": "string"
+    }
+  }
+}

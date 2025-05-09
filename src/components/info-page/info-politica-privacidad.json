@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_info_page_info_politica_privacidads",
+  "info": {
+    "displayName": "infoPoliticaPrivacidad"
+  },
+  "options": {},
+  "attributes": {
+    "nombreTienda": {
+      "type": "string"
+    },
+    "sitioWeb": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

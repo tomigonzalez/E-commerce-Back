@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_info_page_info_sobre_nosotros",
+  "info": {
+    "displayName": "infoSobreNosotros",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "textDesc": {
+      "type": "text"
+    }
+  }
+}

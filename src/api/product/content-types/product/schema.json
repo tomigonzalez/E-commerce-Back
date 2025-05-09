@@ -1,4 +1,4 @@
-{ 
+{
   "kind": "collectionType",
   "collectionName": "products",
   "info": {
@@ -52,19 +52,10 @@
       "relation": "oneToOne",
       "target": "api::sub-category.sub-category"
     },
-    "tipoProducto": {
-      "type": "enumeration",
-      "enum": [
-        "Accesorios",
-        "Hype",
-        "Ropa"
-      ],
-      "required": true
-    },
-    "stock": {
-      "type": "integer",
-      "default": 1,
-      "required": true
+    "size_stock": {
+      "type": "component",
+      "repeatable": true,
+      "component": "default.size-stock"
     }
   }
 }

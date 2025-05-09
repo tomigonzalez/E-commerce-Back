@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_info_page_info_devolucions",
+  "info": {
+    "displayName": "InfoDevolucion"
+  },
+  "options": {},
+  "attributes": {
+    "titleText": {
+      "type": "string"
+    },
+    "textDesc": {
+      "type": "text"
+    }
+  }
+}

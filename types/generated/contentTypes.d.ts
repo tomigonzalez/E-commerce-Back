@@ -400,45 +400,87 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactoContacto extends Struct.CollectionTypeSchema {
-  collectionName: 'contactos';
+export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
+  collectionName: 'home_pages';
   info: {
     description: '';
-    displayName: 'Contacto';
-    pluralName: 'contactos';
-    singularName: 'contacto';
+    displayName: 'HomePage';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    bannerDescuentoTexto: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    direccion: Schema.Attribute.Text;
-    email: Schema.Attribute.Email;
-    Facebook: Schema.Attribute.String;
-    google_maps_url: Schema.Attribute.Text;
-    Instagram: Schema.Attribute.String;
-    LinkedIn: Schema.Attribute.String;
+    galeriaImg: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    imagenHero: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::contacto.contacto'
+      'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
+    mostrarBannerDescuento: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
-    telefono: Schema.Attribute.String;
+    tituloHero: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    whatsapp: Schema.Attribute.String;
+  };
+}
+
+export interface ApiInfoPageInfoPage extends Struct.CollectionTypeSchema {
+  collectionName: 'info_pages';
+  info: {
+    description: '';
+    displayName: 'InfoPage';
+    pluralName: 'info-pages';
+    singularName: 'info-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contacto: Schema.Attribute.Component<'info-page.info-contacto', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    devolucion: Schema.Attribute.Component<'info-page.info-devolucion', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::info-page.info-page'
+    > &
+      Schema.Attribute.Private;
+    politicaPrivacidad: Schema.Attribute.Component<
+      'info-page.info-politica-privacidad',
+      false
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    sobreNosotros: Schema.Attribute.Component<
+      'info-page.info-sobre-nosotros',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
 export interface ApiOrdenOrden extends Struct.CollectionTypeSchema {
   collectionName: 'ordens';
   info: {
+    description: '';
     displayName: 'Orden';
     pluralName: 'ordens';
     singularName: 'orden';
@@ -447,21 +489,29 @@ export interface ApiOrdenOrden extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    codigo_pago: Schema.Attribute.String;
-    creado_en: Schema.Attribute.DateTime;
+    apellido: Schema.Attribute.String;
+    codigoPostal: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     direccion: Schema.Attribute.String;
     dni: Schema.Attribute.String;
     email: Schema.Attribute.Email;
-    estado: Schema.Attribute.Enumeration<['pendiente', 'pagado', 'cancelado']>;
+    envio: Schema.Attribute.Component<'default.envio', false>;
+    estado: Schema.Attribute.Enumeration<
+      ['pendiente', 'confirmado', 'cancelado']
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localidad: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::orden.orden'> &
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String;
-    productos: Schema.Attribute.String;
+    producto_pedido: Schema.Attribute.Component<
+      'default.producto-pedido',
+      true
+    >;
     publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.String;
     total: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -501,16 +551,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Decimal;
     productName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    size_stock: Schema.Attribute.Component<'default.size-stock', true>;
     slug: Schema.Attribute.UID<'productName'>;
-    stock: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<1>;
     sub_category: Schema.Attribute.Relation<
       'oneToOne',
       'api::sub-category.sub-category'
     >;
-    tipoProducto: Schema.Attribute.Enumeration<['Accesorios', 'Hype', 'Ropa']> &
-      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1058,7 +1104,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
-      'api::contacto.contacto': ApiContactoContacto;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::info-page.info-page': ApiInfoPageInfoPage;
       'api::orden.orden': ApiOrdenOrden;
       'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;

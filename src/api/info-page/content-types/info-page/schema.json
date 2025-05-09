@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "info_pages",
+  "info": {
+    "singularName": "info-page",
+    "pluralName": "info-pages",
+    "displayName": "InfoPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sobreNosotros": {
+      "type": "component",
+      "repeatable": false,
+      "component": "info-page.info-sobre-nosotros"
+    },
+    "politicaPrivacidad": {
+      "type": "component",
+      "repeatable": false,
+      "component": "info-page.info-politica-privacidad"
+    },
+    "devolucion": {
+      "type": "component",
+      "repeatable": false,
+      "component": "info-page.info-devolucion"
+    },
+    "contacto": {
+      "type": "component",
+      "repeatable": false,
+      "component": "info-page.info-contacto"
+    }
+  }
+}

@@ -1,15 +1,9 @@
 {
-  "kind": "collectionType",
-  "collectionName": "contactos",
+  "collectionName": "components_info_page_info_contactos",
   "info": {
-    "singularName": "contacto",
-    "pluralName": "contactos",
-    "displayName": "Contacto",
-    "description": ""
+    "displayName": "InfoContacto"
   },
-  "options": {
-    "draftAndPublish": true
-  },
+  "options": {},
   "attributes": {
     "telefono": {
       "type": "string"
@@ -21,18 +15,18 @@
       "type": "email"
     },
     "google_maps_url": {
-      "type": "text"
+      "type": "string"
     },
     "direccion": {
-      "type": "text"
-    },
-    "Instagram": {
       "type": "string"
     },
-    "Facebook": {
+    "instagram": {
       "type": "string"
     },
-    "LinkedIn": {
+    "facebook": {
+      "type": "string"
+    },
+    "linkedin": {
       "type": "string"
     }
   }
